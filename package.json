@@ -1,0 +1,17 @@
+{
+  "name": "next-saas-rbac",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.5",
+    "typescript": "^5.4.5"
+  },
+  "packageManager": "pnpm@9.1.1",
+  "engines": {
+    "node": ">=18"
+  }
+}
