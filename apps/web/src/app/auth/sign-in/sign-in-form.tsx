@@ -1,25 +1,23 @@
 "use client"
 
-import { Label } from "@/components/ui/label"
-import { signInWithEmailAndPassword } from "./actions"
-import { Input } from "@/components/ui/input"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Separator } from "@radix-ui/react-separator"
-import Image from "next/image"
-import githubIcon from '@/assets/github-icon.svg'
-import { useActionState } from "react"
 import { AlertTriangle, Loader2 } from 'lucide-react'
+import Image from "next/image"
+import Link from "next/link"
+
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { signInWithEmailAndPassword } from "./actions"
+import { useFormState } from "@/hooks/use-form-state"
+import { Separator } from "@/components/ui/separator"
+import githubIcon from "@/assets/github-icon.svg"
+import { Button } from "@/components/ui/button"
+import { Label } from "@/components/ui/label"
+import { Input } from "@/components/ui/input"
 
 export function SignInForm() {
-  const [{ success, message, errors }, formAction, isPending] = useActionState(
-    signInWithEmailAndPassword,
-    { success: false, message: null, errors: null }
-  )
+  const [{ success, message, errors }, handleSubmit, isPending] = useFormState(signInWithEmailAndPassword)
 
   return (
-    <form action={formAction} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4">
       {success === false && message && (
         <Alert variant="destructive">
           <AlertTriangle className="size-4" />
