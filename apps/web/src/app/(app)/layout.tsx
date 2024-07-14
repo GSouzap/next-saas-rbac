@@ -11,8 +11,6 @@ export default function AppLayout({
   }
 
   return (
-    <>
-      {children}
-    </>
+    <>{children}</>
   );
 }
