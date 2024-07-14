@@ -1,6 +1,7 @@
 "use client"
 
 import { AlertTriangle, Loader2 } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import Image from "next/image"
 import Link from "next/link"
 
@@ -14,7 +15,14 @@ import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 
 export function SignInForm() {
-  const [{ success, message, errors }, handleSubmit, isPending] = useFormState(signInWithEmailAndPassword)
+  const router = useRouter()
+
+  const [{ success, message, errors }, handleSubmit, isPending] = useFormState(
+    signInWithEmailAndPassword,
+    () => {
+      router.push('/')
+    }
+  )
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
